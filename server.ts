@@ -6,6 +6,7 @@ import * as express from 'express';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { AppServerModule } from './src/main.server';
+import { XmlParser } from '@angular/compiler';
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -20,6 +21,31 @@ export function app(): express.Express {
 
   server.set('view engine', 'html');
   server.set('views', distFolder);
+
+  // server.get("/sitemap.xml", (req, res) => {
+  //   // Gerando conteúdo do sitemap.xml como uma string
+  //   const xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
+  //   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  //     <url>
+  //       <loc>https://www.example.com/</loc>
+  //       <lastmod>2025-02-07</lastmod>
+  //       <changefreq>daily</changefreq>
+  //       <priority>1.0</priority>
+  //     </url>
+  //     <url>
+  //       <loc>https://www.example.com/about</loc>
+  //       <lastmod>2025-02-07</lastmod>
+  //       <changefreq>monthly</changefreq>
+  //       <priority>0.8</priority>
+  //     </url>
+  //   </urlset>`;
+
+  //   // Definindo o cabeçalho Content-Type como XML
+  //   res.setHeader("Content-Type", "application/xml");
+
+  //   // Enviando o XML como resposta
+  //   res.end(xmlContent);
+  // });
 
   // Example Express Rest API endpoints
   // server.get('/api/**', (req, res) => { });

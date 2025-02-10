@@ -143,18 +143,18 @@
         "prerender": {
           "builder": "@nguniversal/builders:prerender",
           "options": {
-            "routes": [
-              "/"
-            ]
+            "routesFile": "routes.txt"
           },
           "configurations": {
             "production": {
               "browserTarget": "test-ssr:build:production",
-              "serverTarget": "test-ssr:server:production"
+              "serverTarget": "test-ssr:server:production",
+              "routesFile": "routes.txt"
             },
             "development": {
               "browserTarget": "test-ssr:build:development",
-              "serverTarget": "test-ssr:server:development"
+              "serverTarget": "test-ssr:server:development",
+              "routesFile": "routes.txt"
             }
           },
           "defaultConfiguration": "production"
