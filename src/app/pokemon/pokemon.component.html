@@ -1,0 +1,50 @@
+<div class="wrapper w-full flex flex-column align-items-center justify-content-center my-8">
+  <p-card 
+    [style]="{ width: '100%', minWidth: '29rem' }" 
+    class="card p-5 overflow-hidden">
+    <ng-container *ngIf="pokemon">
+      <ng-template pTemplate="header" *ngIf="pokemon">
+        <img alt="Card" class="w-full h-14rem p-3" [src]="pokemon.sprites.other.dream_world.front_default" />
+      </ng-template>
+
+      <ng-template pTemplate="title">
+        <div class="px-5">
+          {{ pokemon.name }}
+        </div>
+      </ng-template>
+
+      <ng-template pTemplate="subtitle">
+        <div class="px-5">
+          {{ pokemon.species.name }}
+        </div>
+      </ng-template>
+
+      <ul class="m-0 px-5">
+        <ng-container *ngFor="let item of pokemon.abilities">
+          <li>{{ item.ability.name }}</li>
+        </ng-container>
+      </ul>
+
+      <ng-template pTemplate="footer">
+        <div class="flex gap-4 p-5">
+          <p-button 
+            label="Anterior" 
+            severity="secondary" 
+            class="w-full" 
+            [outlined]="true"
+            size="large"
+            styleClass="w-full"
+            (onClick)="prevPokemon()" />
+
+          <p-button 
+            label="Proximo" 
+            severity="danger" 
+            class="w-full" 
+            size="large"
+            styleClass="w-full"
+            (onClick)="nextPokemon()" />
+        </div>
+      </ng-template>
+    </ng-container>
+  </p-card>
+</div>

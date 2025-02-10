@@ -3,14 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
-  { path: '', component: AppComponent },
-  { path: 'pokemon/:id', component: AppComponent },
+  { 
+    path: '', 
+    loadChildren: () => import('./pokemon/pokemon.module').then(m => m.PokemonModule)
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
     initialNavigation: 'enabledBlocking'
-})],
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
