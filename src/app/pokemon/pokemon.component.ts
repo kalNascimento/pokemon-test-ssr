@@ -15,13 +15,12 @@ export class PokemonComponent {
   protected pokemon!: Pokemon;
 
   protected index = 1;
-  
+
   constructor(
     protected pokemonService: PokemonService,
     private meta: Meta,
     private route: ActivatedRoute,
     private router: Router,
-    @Inject(PLATFORM_ID) private platformId: string
   ) { }
 
   ngOnInit(): void {
@@ -41,14 +40,12 @@ export class PokemonComponent {
 
   nextPokemon() {
     this.index = this.index + 1;
-    this.getPokemonById(this.index);
     this.router.navigate(['pokemon', this.index]);
   }
 
   prevPokemon() {
     this.index = this.index - 1;
     if (this.index <= 0) this.index = 1;
-    // this.getPokemonById(this.index);
     this.router.navigate(['pokemon', this.index]);
   }
 }
